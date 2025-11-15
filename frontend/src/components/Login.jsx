@@ -109,7 +109,7 @@ export default function Login() {
       console.error("Login error:", error);
       let errorMessage = "เกิดข้อผิดพลาดในการเข้าสู่ระบบ กรุณาลองใหม่อีกครั้ง";
       if (error?.code === "auth/user-not-found")
-        errorMessage = "ไม่พบผู้ใช้งาน กรุณาตรวจสอบอีเมลหรือเบอร์โทรศัพท์";
+        errorMessage = "ไม่พบผู้ใช้งาน กรุณาตรวจสอบอีเมล";
       else if (error?.code === "auth/wrong-password")
         errorMessage = "รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง";
       else if (error?.code === "auth/invalid-email")
@@ -127,26 +127,32 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-shell">
+        <div className="card-waves" aria-hidden="true">
+          <span className="wave-circle wave-circle-one"></span>
+          <span className="wave-circle wave-circle-two"></span>
+          <span className="wave-circle wave-circle-three"></span>
+          <span className="wave-circle wave-circle-four"></span>
+        </div>
         <div className="login-card">
           <div className="login-logo" aria-label="CYN Communication logo">
             <img src={LOGO_URL} alt="CYN Communication" />
           </div>
           <h2 className="login-title">เข้าสู่ระบบ</h2>
           <p className="login-subtitle">
-            กรุณาเข้าสู่ระบบเพื่อใช้งานระบบบริหารจัดการคลังสินค้า
+            กรุณาเข้าสู่ระบบเพื่อใช้งานระบบบริหารจัดการคลัง
           </p>
 
           <form onSubmit={handleLogin}>
             <div className="form-field">
               <label className="form-label" htmlFor="identifier">
-                อีเมลหรือเบอร์โทรศัพท์
+                อีเมล
               </label>
               <input
                 id="identifier"
                 className="text-input"
                 value={identifier}
                 onChange={(e) => setIdentifier(e.target.value)}
-                placeholder="อีเมลหรือเบอร์โทรศัพท์"
+                placeholder="กรุณากรอกอีเมล"
                 required
               />
             </div>
